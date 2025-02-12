@@ -1,8 +1,6 @@
 #ifndef SEVENSEGMENTDISPLAY_H
 #define SEVENSEGMENTDISPLAY_H
-#include <vector>
-#include <string>
-#include <iostream>
+#include <Arduino.h>  // for the String class and Serial
 
 class SevenSegmentDisplay {
 public:

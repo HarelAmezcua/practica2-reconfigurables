@@ -1,14 +1,20 @@
-// g++ -o main main.cpp SevenSegmentDisplay.cpp && ./main
-#include <iostream>
-#include <vector>
-#include <string>
 #include "SevenSegmentDisplay.h"
 
+SevenSegmentDisplay display;
+bool conditional = false;
 
-int main() {
-    SevenSegmentDisplay display;
+void setup() {
+  Serial.begin(9600);
 
-    for (int i = 0; i < 16; ++i) {
+  for (int i = 0; i<7;i++){
+    pinMode(i,OUTPUT);
+  }
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  if (!conditional){
+      for (int i = 0; i < 16; ++i) {
         bool A = (i & 0b1000) != 0;
         bool B = (i & 0b0100) != 0;
         bool C = (i & 0b0010) != 0;
@@ -22,10 +28,14 @@ int main() {
         bool f = display.segmentF(A, B, C, D);
         bool g = display.segmentG(A, B, C, D);
 
-        std::cout << "Displaying number: " << i << std::endl;
-        std::cout <<  A <<  B << C <<  D << std::endl;
+        Serial.print("Displaying number: ");
+        Serial.println(i);
+        Serial.println(String((int)A) + " " +
+                      String((int)B) + " " +
+                      String((int)C) + " " +
+                      String((int)D));   
         display.seven_segment_display(a, b, c, d, e, f, g);
-        std::cout << std::endl;
+        conditional = true;
     }
-    return 0;
+  }
 }
