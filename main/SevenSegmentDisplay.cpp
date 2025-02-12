@@ -15,14 +15,15 @@ bool SevenSegmentDisplay::segmentB(bool A, bool B, bool C, bool D) {
 
 bool SevenSegmentDisplay::segmentC(bool A, bool B, bool C, bool D) {
     // Implement the logic for segment C
-    bool salida = (!C) || (A) || (C && D) || (B) ;
+    //bool salida = (!B && !D) || (!A && C) || (!A && B && !D) || (A && !B && !D) || (A && !C && D);
+    bool salida = (!A && B) || (A && !B) || (!C && D) || (!A && !C && !D) || (!A && C && D); 
     return salida;
 
 }
 
 bool SevenSegmentDisplay::segmentD(bool A, bool B, bool C, bool D) {
     // Implement the logic for segment D
-    bool salida = (A) || (!D) || (B && !C) || (!B && C) ;
+    bool salida = (A && !C) || (!A && !B && C) || (B && !C && D) || (B && C && !D) || (A && !B && D) || (!A && !B && !C && !D) ;
     return salida;
 }
 
@@ -50,8 +51,8 @@ bool SevenSegmentDisplay::segmentF(bool A, bool B, bool C, bool D) {
 
 bool SevenSegmentDisplay::segmentG(bool A, bool B, bool C, bool D) {
     // Implement the logic for segment G
-    bool salida = (A) || (B && !C) || (C && !D) || (!B && C) ;
-    //bool salida = (!B) || (C && !D)  ;
+    //bool salida = (A) || (B && !C) || (C && !D) || (!B && C) ;
+    bool salida = (!A && !B && C) || (!A && B && !C) || (A && !C && D) || (C && !D) || (A && !B) || (A && C);
     return salida;    
 }
 
