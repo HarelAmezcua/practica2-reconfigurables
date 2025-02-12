@@ -62,7 +62,9 @@ void SevenSegmentDisplay::seven_segment_display(bool a, bool b, bool c, bool d, 
 
     bool boolArray[7] = {a,b,c,d,e,f,g};
     
-    for (int i = 0; i <7;i++){digitalWrite(i, boolArray[i] ? HIGH : LOW);}
+    for (int i = 2; i <7;i++){digitalWrite(i, boolArray[i] ? HIGH : LOW);}
+    digitalWrite(12, boolArray[0] ? HIGH : LOW);
+    digitalWrite(13, boolArray[1] ? HIGH : LOW);
 
     String line0 = a ? "  _ " : "   ";
     String line1 = String(f ? "|" : " ") + (g ? " _ " : "   ") + (b ? "|" : " ");
